@@ -1,22 +1,19 @@
-$(window).keypress(function(e) {
-    if (e.which === 32) {
-      $("#quote").addClass("reset");
-      $("#quote").removeClass("executed");
-      $("#writer").toggleClass("fade");
-      setTimeout(function(){
-        $.ajax({
-          crossOrigin: true,
-          url: "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=mycallback",
-          dataType:"jsonp"
-      });
-      }, 1000);
+function getColor() {
+    return (
+      "#" +
+      Math.random()
+        .toString(16)
+        .slice(2, 8)
+    );
+  }
+  
+  function setBackground() {
+    var bgColor = getColor();
+    document.body.style.background = bgColor;
+  }
+
+  document.body.onkeyup = function(e) {
+    if (e.keyCode == 191) {
+      setBackground();
     }
-});
-function mycallback(json){
-  var quote = json[0];
-  $("#quote").html(quote.content)
-  $("#writer").html(quote.title)
-  $("#quote").addClass("executed");
-    $("#quote").removeClass("reset");
-    $("#writer").toggleClass("fade");
-}
+  };
