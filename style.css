@@ -2,5 +2,12 @@ body {
     transition: all 0.5s ease;
 }
 
+html {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
 
 
